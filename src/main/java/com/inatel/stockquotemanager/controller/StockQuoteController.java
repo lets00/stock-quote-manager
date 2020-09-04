@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,15 @@ public class StockQuoteController {
 			stockQuotes.add(tempStockQuote);
 		}	
 		return stockQuotes;
+	}
+	
+	@GetMapping("/stock-quotes/{id}")
+	public StockQuote getStockQuotesById(@PathVariable(value="id") long id) {
+		StockQuote stockQuote = new StockQuote();
+		Market market = marketRepository.findById(id);
+		stockQuote.setMarket(market.getName());
+		stockQuote.setQuotes( getQuotesByMarket(id));
+		return stockQuote;		
 	}
 
 	@PostMapping("/stock-quotes")
