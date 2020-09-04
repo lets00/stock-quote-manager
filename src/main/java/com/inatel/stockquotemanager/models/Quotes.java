@@ -7,33 +7,43 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="MARKET")
-public class Market {
+@Table(name="QUOTES")
+public class Quotes {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private String name;
-	private String description;
+	private String marketId;
+	private String date;	
+	private int quote;
 	
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getMarketId() {
+		return marketId;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMarketId(String marketId) {
+		this.marketId = marketId;
 	}
-	public String getDescription() {
-		return description;
+	public String getDate() {
+		return date;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public int getQuote() {
+		return quote;
+	}
+	public void setQuote(int quote) {
+		this.quote = quote;
 	}	
+		
 }
