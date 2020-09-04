@@ -18,11 +18,9 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 #### Stage 2: A minimal docker image with command to run the app 
 FROM openjdk:11-jre-slim
 
-ARG DEPENDENCY=/app/target/dependency
+ARG DEPENDENCY=/app/target/
 
 # Copy project dependencies from the build stage
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+COPY --from=build ${DEPENDENCY}/ /app/target
 
 ENTRYPOINT ["java","-jar","/app/target/stock-quote-manager-0.0.1-SNAPSHOT.jar"]
