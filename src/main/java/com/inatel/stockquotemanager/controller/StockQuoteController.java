@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,7 +22,6 @@ import com.inatel.stockquotemanager.models.StockQuote;
 import com.inatel.stockquotemanager.repository.QuoteRepository;
 
 @RestController
-@RequestMapping(value="/api")
 public class StockQuoteController {
 	
 	private Stock[] stock_cache;
