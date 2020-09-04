@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -89,6 +90,11 @@ public class StockQuoteController {
 		return quoteRepository.save(quotes);
 	}
 	
+	@DeleteMapping("/stockcache")
+	public void cleanCache() {
+		stock_cache = null;
+	}
+	
 	private boolean isInCache(String market_id) {
 		for (int x = 0; x < stock_cache.length; x++) {
 			if (stock_cache[x].getId().equals(market_id)) {
@@ -97,7 +103,7 @@ public class StockQuoteController {
 		}
 		return false;
 	}
-	
+		
 	private Dictionary<String, Integer> getQuotesByMarket(String market_id){
 		List<Quotes> quotes = quoteRepository.findByMarketId(market_id);
 		Dictionary<String, Integer> specific_quote = new Hashtable<String, Integer>();
