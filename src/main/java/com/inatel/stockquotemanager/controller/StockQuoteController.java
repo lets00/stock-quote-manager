@@ -94,6 +94,9 @@ public class StockQuoteController {
 	}
 	
 	private boolean isInCache(String market_id) {
+		if (stock_cache == null) {
+			stock_cache = consumeStockManager();
+		}
 		for (int x = 0; x < stock_cache.length; x++) {
 			if (stock_cache[x].getId().equals(market_id)) {
 				return true;
