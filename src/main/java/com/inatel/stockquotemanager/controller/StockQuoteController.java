@@ -34,6 +34,7 @@ public class StockQuoteController {
 	public StockQuoteController(){
 		this.restTemplate = new RestTemplate();
 		stock_cache = consumeStockManager();
+		register();
 	}
 	
 	private Stock[] consumeStockManager() {
@@ -46,6 +47,13 @@ public class StockQuoteController {
 		market.put("id",market_id);
 		market.put("description","test "+ market_id);
 		restTemplate.postForObject("http://localhost:8080/stock", market, ResponseEntity.class);
+	}
+	
+	private void register() {
+		Dictionary<String, String> market = new Hashtable<String, String>();
+		market.put("host", "localhost");
+		market.put("port", "8001");
+		restTemplate.postForObject("http://localhost:8080/notification", market, ResponseEntity.class);
 	}
 	
 	@GetMapping("/stock-quotes")
