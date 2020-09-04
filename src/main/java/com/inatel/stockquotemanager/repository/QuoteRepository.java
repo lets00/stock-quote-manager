@@ -8,6 +8,6 @@ import com.inatel.stockquotemanager.models.Quotes;
 
 public interface QuoteRepository extends JpaRepository<Quotes, Long>{
 	
-	List<Quotes> findByMarketId(long id);
+	List<Quotes> findByMarketId(String id);
 
 }
