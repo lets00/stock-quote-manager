@@ -6,6 +6,7 @@ The stock-manager (the second service) can be found on [this](https://github.com
 
 ## How to run
 * JAVA Version = 11
+
 First, you must have installed on your machine `docker` and `docker-compose`.So executes the **stock-manager** service first:
 
 ``` sh
