@@ -16,21 +16,22 @@ public class Quotes {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private long market_id;	
+	private long marketId;
 	private String date;	
 	private int quote;
 	
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getMarket_id() {
-		return market_id;
+	public long getMarketId() {
+		return marketId;
 	}
-	public void setMarket_id(long market_id) {
-		this.market_id = market_id;
+	public void setMarketId(long marketId) {
+		this.marketId = marketId;
 	}
 	public String getDate() {
 		return date;
