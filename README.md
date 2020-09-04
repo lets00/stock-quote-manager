@@ -6,15 +6,18 @@ The stock-manager (the second service) can be found on [this](https://github.com
 
 ## How to run
 
-First, you must have installed on your machine `docker` and `docker-compose`.
-After that, executes:
+First, you must have installed on your machine `docker` and `docker-compose`.So executes the **stock-manager** service first:
+
+``` sh
+$ git clone https://github.com/lets00/stock-manager.git
+$ cd stock-manager/
+$ docker-compose up -d
+```
+
+After that, clone this project, access the folder and executes:
 
 ```sh
 $ docker-compose up -d
-
-or
-
-# docker-compose up -d
 ```
 
 ## Routes
