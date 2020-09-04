@@ -2,7 +2,7 @@
 
 This project implements the stock-quote manager service passed as challenge by Inatel.
 
-The stock-manager (the second service) can be found on [this]() link.
+The stock-manager (the second service) can be found on [this](https://github.com/lets00/stock-manager) link.
 
 ## How to run
 
