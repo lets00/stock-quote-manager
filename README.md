@@ -5,7 +5,7 @@ This project implements the stock-quote manager service passed as challenge by I
 The stock-manager (the second service) can be found on [this](https://github.com/lets00/stock-manager) link.
 
 ## How to run
-
+* JAVA Version = 11
 First, you must have installed on your machine `docker` and `docker-compose`.So executes the **stock-manager** service first:
 
 ``` sh
@@ -14,10 +14,12 @@ $ cd stock-manager/
 $ docker-compose up -d
 ```
 
-After that, clone this project, access the folder and executes:
+After that, execute:
 
 ```sh
-$ docker-compose up -d
+$ ./mvnw package -DskipTests
+$ java -jar target/stock-quote-manager-0.0.1-SNAPSHOT.jar
+
 ```
 
 ## Routes
