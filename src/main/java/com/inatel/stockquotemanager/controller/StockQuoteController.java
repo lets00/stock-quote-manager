@@ -6,12 +6,14 @@ import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.inatel.stockquotemanager.models.Market;
 import com.inatel.stockquotemanager.models.Quotes;
@@ -45,10 +47,14 @@ public class StockQuoteController {
 	@GetMapping("/stock-quotes/{id}")
 	public StockQuote getStockQuotesById(@PathVariable(value="id") long id) {
 		StockQuote stockQuote = new StockQuote();
-		Market market = marketRepository.findById(id);
-		stockQuote.setMarket(market.getName());
-		stockQuote.setQuotes( getQuotesByMarket(id));
-		return stockQuote;		
+		try {
+			Market market = marketRepository.findById(id);
+			stockQuote.setMarket(market.getName());
+			stockQuote.setQuotes(getQuotesByMarket(id));
+			return stockQuote;
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Market not found");
+		}
 	}
 
 	@PostMapping("/stock-quotes")
